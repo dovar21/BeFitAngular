@@ -1,0 +1,20 @@
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="isSidebarOpened" #sidenav class="position-fixed d-print-none">
+        <perfect-scrollbar class="light">
+            <main-navigation></main-navigation>
+        </perfect-scrollbar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-progress-bar
+            mode="indeterminate"
+            *ngIf="self.isRequesting"
+            class="mat-progress-bar_top global"
+        ></mat-progress-bar>
+
+        <app-header [class.pushed]="isSidebarOpened"></app-header>
+
+        <div [class.faded]="self.isRequesting">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
